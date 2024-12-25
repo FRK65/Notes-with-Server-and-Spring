@@ -11,6 +11,8 @@ Java Collection framework provides many interfaces and classes.
 
 **Classes    : ArrayList, Vector, LinkedList, PriorityQueue, HashSet, LinkedHashSet, TreeSet**
 
+![Cat Image](resources/images/java-collection-hierarchy.png)
+
 # What is Collection in Java?
 A Collection represents a single unit of objects, i.e., a group.
 
