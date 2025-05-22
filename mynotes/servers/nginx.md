@@ -1,4 +1,4 @@
-# How you can explain NGINX to a non-technical person** using a real-world analogy:
+# 1. How you can explain NGINX to a non-technical person** using a real-world analogy:
 
 ---
 
@@ -44,3 +44,102 @@ NGINX also acts like a doorman: making sure only legit customers get in (securit
 > "NGINX is like a smart waiter in a very busy restaurant. It handles customer requests, makes sure the kitchen isn’t overwhelmed, and gets the job done quickly and efficiently."
 
 ---
+
+# 2. Here’s a simple way to explain OpenResty to a non-technical person, using an analogy:
+
+---
+
+### 🍽️ Imagine a Restaurant Again:
+
+Earlier, we said **NGINX is like a smart waiter** who takes orders, balances the kitchen load, and quickly serves food.
+
+Now…
+
+### 🧠 **OpenResty is a Smart Waiter with a Built-in Chef Brain**
+
+Instead of always running back to the kitchen (backend server) for every customer request, this waiter can **do some cooking right at the table**.
+
+---
+
+### 📦 What Does That Mean?
+
+#### Without OpenResty:
+
+* Every time a customer asks for a customized meal, the waiter has to go to the kitchen.
+* This takes time and puts pressure on the kitchen.
+
+#### With OpenResty:
+
+* The waiter (NGINX + Lua) can **handle some orders by themselves** using their own tools and recipes.
+* They’re faster because they don’t always need the kitchen.
+* They can also **decide on the fly**: “Should I go to the kitchen or just do it myself?”
+
+---
+
+### ✅ Simple Summary:
+
+> **OpenResty is like upgrading a smart waiter (NGINX) by giving them cooking skills (Lua scripting). Now they can handle more tasks quickly, right at the table, without always bothering the kitchen (backend server).**
+
+---
+
+### 🧩 Why This Matters
+
+* It makes the whole restaurant faster and more efficient.
+* Fewer people are needed in the kitchen.
+* It allows for custom, real-time service without slowing things down.
+
+Great! Let's now explain **Lua** in the same non-technical, simple way.
+
+---
+
+# 3. What is 🧠 Lua, How to explain in easy way ?
+
+**Lua** (pronounced LOO-ah) is a **lightweight programming language** that is:
+
+* Easy to embed inside other software (like OpenResty or games)
+* Fast and small
+* Used to **add intelligence or logic** to things
+
+---
+
+### 🛠️ Everyday Analogy:
+
+### 🎮 Imagine a Toy Robot
+
+You buy a old toy robot. Old cell wali car, It moves, lights up, and plays sounds.
+
+But… it only follows fixed instructions.
+
+Now, imagine you get a **remote control car** that lets you **program your own instructions** for how the robot behaves:
+
+* Dance if someone claps
+* Flash red if someone walks by
+* Automatically moves in different direction if any hurdle in path
+
+That **remote control language** is like **Lua**.
+
+---
+
+### 🧩 In the Case of OpenResty:
+
+Lua is the **custom logic** that tells the web server what to do, like:
+
+* Block this user
+* Cache this page for 10 minutes
+* Redirect users based on their location
+* Log something only if it looks suspicious
+
+---
+
+### ✅ Simple Summary:
+
+> **Lua is a small, smart language that gives your system a brain—it. which lets you teach your software how to react, decide, and act in smart ways.**
+
+It’s like writing small “if this, then that” rules, but **inside the web server or app.**
+
+---
+
+
+
+
+
