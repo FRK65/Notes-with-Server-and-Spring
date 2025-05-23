@@ -175,3 +175,120 @@ public void testRegisterUser() {
 > "Unit tests check one piece of code in isolation. Integration tests check that multiple parts work together properly."
 
 ---
+
+## 📦 Java & Spring Concepts
+
+### 1. **`@RunWith(SpringJUnit4ClassRunner.class)`**
+
+* **What it is**: Tells JUnit to use Spring’s testing support.
+* **Why used**: So we can load the Spring application context and use dependency injection (`@Resource`).
+* **Interview explanation**:
+
+  > "`@RunWith(SpringJUnit4ClassRunner.class)` allows Spring to manage the beans and dependencies during testing, just like it does in the real app."
+
+---
+
+### 2. **`@ContextConfiguration({"/acrm-context-test.xml"})`**
+
+* **What it is**: Specifies the Spring XML config file to use for this test.
+* **Why used**: Loads test-specific beans, mocks, or settings (like mock services instead of real APIs).
+* **Interview explanation**:
+
+  > "`@ContextConfiguration` loads the Spring context with test configs. It lets us test using mock or dummy setups without hitting real systems."
+
+---
+
+### 3. **`@Resource`**
+
+* **What it is**: Injects the Spring-managed bean into the test.
+* **Why used**: So we can test the real implementation (`AcrmProviderMockGateway`) without manually creating it.
+* **Interview explanation**:
+
+  > "`@Resource` injects the gateway we want to test, so Spring handles creating it and wiring its dependencies."
+
+---
+
+### 4. **`@Test`**
+
+* **What it is**: A JUnit annotation that marks methods as test cases.
+* **Why used**: JUnit uses this to know which methods to run as part of the test suite.
+* **Interview explanation**:
+
+  > "Each `@Test` method checks one use case — either a successful result or a failure — making sure our code behaves correctly."
+
+---
+
+### 5. **`Assert.assertEquals`, `Assert.assertTrue`, `Assert.fail()`**
+
+* **What they are**: JUnit assertions to check if outputs are correct.
+* **Why used**:
+
+  * `assertEquals`: Check expected vs actual value.
+  * `assertTrue`: Check if a condition is true.
+  * `fail()`: Force a test to fail if something unexpected happens.
+* **Interview explanation**:
+
+  > "Assertions validate that our code gives the right results. If the output is wrong, the test fails, helping us catch bugs early."
+
+---
+
+## 📘 Custom/Domain Classes
+
+### `AcrmIndividualResponse`, `IndividualPatchRequest`, `PlatformException`
+
+* These are **custom domain classes**:
+
+  * `AcrmIndividualResponse`: likely represents person data returned from the gateway.
+  * `IndividualPatchRequest`: probably used to send updates for a person.
+  * `PlatformException`: a custom exception that signals an application-specific error.
+
+**Interview Tip**:
+
+> "These are app-specific models and exceptions used for sending and receiving data between layers or systems."
+
+---
+
+## 🔁 Exception Handling in Tests
+
+### `try-catch` blocks + `fail()` + `assertTrue(e instanceof PlatformException)`
+
+* **Why used**: To test how the system reacts when something goes wrong (like invalid input).
+* **How it helps**: Ensures that expected errors are thrown and handled properly.
+* **Interview explanation**:
+
+  > "We write tests not just for success but also to confirm that the right exceptions are thrown for bad inputs — this is essential for robustness."
+
+---
+
+## 🧪 What the Test Class Covers
+
+* Tests both **happy path** (correct output) and **error path** (exception thrown).
+* Validates methods like:
+
+  * `getIndividual`
+  * `patchIndividualUpdateUserId`
+  * `patchIndividualUpdateEmailAddress`
+  * `patchIndividualUpdateContactPhoneNo`
+  * `patchIndividualUpdateAllDetails`
+
+**Each method is tested twice**:
+✅ Once with valid data.
+❌ Once to simulate failure (using `THROW_EXCEPTION`).
+
+---
+
+## ✅ How to Summarize in Interview
+
+Here’s a clear, concise response:
+
+> “This is a JUnit test class that uses Spring’s testing support. `@RunWith` and `@ContextConfiguration` allow Spring to inject the actual gateway component we’re testing. Each `@Test` method checks a different function like getting or updating user info. We use assertions to confirm the expected results, and we test both normal and error scenarios using custom exceptions like `PlatformException`. These tests help ensure the gateway handles data and errors correctly before it goes live.”
+
+---
+
+## Want a 30-second elevator pitch?
+
+> “This test class checks a service that updates and fetches user details. It uses Spring to inject the real component, and JUnit to test various scenarios — including error handling. It confirms the right values are returned and that custom exceptions are thrown when things go wrong.”
+
+---
+
+
