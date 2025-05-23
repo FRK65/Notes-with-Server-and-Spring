@@ -66,3 +66,128 @@ Generated UUID: 3f50c3e8-1f0b-4e3c-93bb-624e2dc32c94
 ```
 > Note: Every time you run the program, it generates a different UUID.
 
+# 2 What is @Transactional?
+
+@Transactional is like a guarantee in Java Spring project that make sure a group of tasks/insructions will either all executed and completed successfully or none will happen at all. 
+This means if something goes wrong during the process, everything is rolled back to keep things consistent.
+
+# Real-life analogy:
+Imagine you’re transferring money from your bank account to a friend’s account.
+
+Step 1: Debit money out from your account.
+Step 2: Credit money into your friend’s account.
+You want both steps to happen together. If the money is taken/Debit out of your account but doesn’t get added/Credited to your friend’s account, that’s a problem!
+So, the bank treats this whole process as a transaction: if anything fails, they cancel the whole operation and no money moves anywhere.
+
+# How @Transactional works in Spring:
+When you put @Transactional on a method, it means:
+- Start the transaction before the method runs.
+- If the method finishes without errors, commit the changes (save them permanently).
+- If an error happens, rollback (undo) all changes made during the method.
+
+
+### Simple Java Spring example:
+
+```java
+@Service
+public class BankService {
+
+    @Autowired
+    private AccountRepository accountRepository;
+
+    @Transactional
+    public void transferMoney(Long fromAccountId, Long toAccountId, double amount) {
+
+        // Step 1: Withdraw money from sender
+        Account fromAccount = accountRepository.findById(fromAccountId).get();
+        fromAccount.withdraw(amount);
+        accountRepository.save(fromAccount);
+
+        // Step 2: Deposit money to receiver
+        Account toAccount = accountRepository.findById(toAccountId).get();
+        toAccount.deposit(amount);
+        accountRepository.save(toAccount);
+
+        // If something goes wrong (e.g., insufficient funds), Spring will rollback everything
+    }
+}
+```
+
+---
+
+### `@Transactional` on a **Class**
+
+When you put `@Transactional` on a **class**, it means **all the public methods inside that class** will be treated as transactional by default.
+
+* So, **every method** in that class will start a transaction when called.
+* If any method fails, all changes inside that method will be rolled back.
+
+**Example:**
+
+```java
+@Transactional
+@Service
+public class BankService {
+
+    public void transferMoney(...) {
+        // This method is transactional
+    }
+
+    public void depositMoney(...) {
+        // This method is transactional too
+    }
+}
+```
+
+---
+
+### `@Transactional` on a **Method**
+
+When you put `@Transactional` on a **specific method**, it means **only that method** will be transactional.
+
+* Other methods in the class will NOT be transactional unless they have their own `@Transactional`.
+* You can use this if you want to control which specific operations need transactions.
+
+**Example:**
+
+```java
+@Service
+public class BankService {
+
+    @Transactional
+    public void transferMoney(...) {
+        // This method is transactional
+    }
+
+    public void checkBalance(...) {
+        // This method is NOT transactional
+    }
+}
+```
+
+---
+
+### Why use class-level vs method-level?
+
+* Use **class-level** when most or all methods need transactions — it’s easier and cleaner.
+* Use **method-level** when only certain methods require transaction control.
+
+---
+
+### Real-life analogy:
+
+* Class-level `@Transactional` = a company policy that **all employees** must follow safety rules.
+* Method-level `@Transactional` = a rule that applies **only to some employees**, like intern/visitor/contract based employee.
+
+---
+
+### Quick interview summary:
+
+* **Class-level `@Transactional`**: All methods are transactional by default.
+* **Method-level `@Transactional`**: Only the annotated method is transactional.
+* Use method-level for fine control, class-level for broad, default behavior.
+
+---
+
+
+
