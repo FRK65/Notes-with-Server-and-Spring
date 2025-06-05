@@ -3,12 +3,19 @@ Java 8 introduced **game-changing features** that improved **functional programm
 ---
 
 1). Lambda Expression. 
+
 2). Functional Interface.
+
 3). Stream API.
+
 4). Default & Static Methods in Interfaces.
+
 5). Optional Class.
+
 6). New Date & Time API (`java.time` package).
+
 7). Collectors Utility.
+
 8). Improved Concurrency (Fork/Join Framework).
 
 ---
