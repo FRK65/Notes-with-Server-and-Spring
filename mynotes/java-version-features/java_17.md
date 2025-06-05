@@ -202,6 +202,85 @@ Java 17 takes a **strict but necessary step** towards making the platform safer 
 - Introduced **Foreign Function & Memory API (Incubator)** for **native interop**.
 - New **macOS/AArch64 support** for Apple Silicon.
 
+Absolutely! Let’s explore each of these **Java 17 features** in the same detailed way.
+
+---
+
+### **5️⃣ Deprecation & Removal of Legacy APIs**
+Java 17 removed outdated features to improve **security, maintainability, and modern coding standards**.
+
+#### **🔹 Deprecated Applet API**
+- The **Applet API** (used for embedding Java programs in web browsers) was deprecated.
+- **Reason**: Modern browsers no longer support Java applets due to security concerns.
+- **Impact**: Java developers should use **JavaScript, WebAssembly, or other web technologies** instead.
+
+#### **🔹 Removed `SecurityManager`**
+- The `SecurityManager` (`java.security.SecurityManager`) was **removed**.
+- **Reason**: It was originally designed to **restrict access to system resources**, but modern security mechanisms replaced it.
+- **Impact**: Applications should now use **OS-level security policies or modules like Java Platform Module System (JPMS)**.
+
+#### **🔹 Dropped RMI Activation System**
+- The **Remote Method Invocation (RMI) Activation System** was **removed**.
+- **Reason**: RMI Activation was **rarely used** and replaced by **modern alternatives** like REST APIs and gRPC.
+- **Impact**: Existing RMI applications should **migrate to newer remote communication technologies**.
+
+---
+
+### **6️⃣ Performance & Garbage Collector (GC) Improvements**
+Java 17 introduced **major optimizations** for memory management and application speed.
+
+#### **🔹 G1 GC & ZGC Improvements**
+- **G1 GC** (Garbage-First Garbage Collector) now **reduces pause times** and handles large heaps more efficiently.
+- **ZGC** (**Z Garbage Collector**) is **low-latency** and now **uses less memory**, making applications faster.
+
+#### **🔹 Elastic Metaspace**
+- **Reduces memory overhead** by **automatically deallocating unused memory**.
+- **Impact**: Java applications consume **less memory**, improving efficiency.
+
+---
+
+### **7️⃣ Text Blocks Enhancement**
+Java 17 **improves text block handling**, making multi-line strings easier to work with.
+
+#### **🔹 What’s New?**
+- **Text blocks (`"""` syntax) are now optimized** for better multi-line formatting.
+- **Leading spaces are handled smarter**, improving **indentation** control.
+
+#### **🔹 Example: Improved Handling of Multi-Line Strings**
+```java
+String json = """
+    {
+        "name": "Java 17",
+        "features": ["Sealed Classes", "GC Improvements"]
+    }
+    """;
+System.out.println(json);
+```
+🚀 **No need for `\n` or manual line breaks** anymore!
+
+---
+
+### **8️⃣ Java Enhancement Proposals (JEPs)**
+Java 17 introduced **new enhancements** to improve system compatibility and native execution.
+
+#### **🔹 Foreign Function & Memory API (Incubator)**
+- Allows Java to **call native functions** (e.g., C libraries) **without JNI**.
+- **Impact**: Developers can now **interact with system memory directly** for better performance.
+
+#### **🔹 macOS/AArch64 Support (Apple Silicon)**
+- Java 17 **fully supports Apple’s M1/M2 chips**, optimizing performance for **macOS on ARM architecture**.
+- **Impact**: Applications **run faster** on Apple Silicon devices.
+
+---
+
+### **🚀 Final Thoughts**
+Java 17 focuses on:
+✅ **Removing outdated features** to keep Java modern.  
+✅ **Boosting performance** with smarter memory management.  
+✅ **Enhancing text blocks** for cleaner, multi-line strings.  
+✅ **Expanding compatibility** for native execution and Apple devices.  
+
+
 ----
 **Sealed Classes**, introduced in **Java 17**, allow developers to **control which classes or interfaces can extend or implement them**. This helps **maintain a restricted hierarchy**, ensuring only specific types can inherit from a given class.
 
