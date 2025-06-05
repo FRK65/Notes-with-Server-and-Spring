@@ -91,9 +91,100 @@ public static void process(Object obj) {
 - New API for better **random number generation**.
 - Supports multiple **generator algorithms** like `Xoshiro256Plus`.
 
+**🔹 What’s New in Java 17 for Random Number Generation?**
+
+Java 17 introduced a **modernized API for pseudo-random number generation**, 
+It improving performance, flexibility, and predictability. 
+This update allows developers to choose from different **algorithms** and easily manage r**andom number streams.**
+
+**🔹 Key Features of Enhanced Pseudo-Random Generators**
+
+✅ **New `RandomGenerator` Interface** → Unifies different random number implementations.  
+✅ **Multiple Random Algorithms** → Supports new efficient algorithms beyond `java.util.Random`.  
+✅ **Stream-based Random Number Generation** → Generates sequences with `ints()`, `longs()`, etc.  
+✅ **Better Performance & Predictability** → Improves consistency across applications.
+
+
+**🔹 Example: Using New Random API**
+With Java 17, you can **choose a specific algorithm** like **Xoshiro256Plus** or **LXM**:
+```java
+import java.util.random.RandomGenerator;
+import java.util.random.RandomGeneratorFactory;
+
+public class RandomDemo {
+    public static void main(String[] args) {
+        RandomGenerator random = RandomGeneratorFactory.of("Xoshiro256Plus").create();
+        
+        System.out.println("Random Integer: " + random.nextInt(100)); // Generates a random number within 100
+        System.out.println("Random Double: " + random.nextDouble());  // Generates a random double between 0.0 and 1.0
+    }
+}
+```
+👉 **No more relying on just `java.util.Random`—you can now pick the best generator for your needs!**  
+
+### **🔹 Why is This Useful?**
+🚀 **Gives developers more control** over randomness.  
+🚀 **Improves security** with predictable yet efficient randomness.  
+🚀 **Provides better algorithms** than older versions (`Math.random()`).  
+
+---
+
+
 ### **4️⃣ Strong Encapsulation in `JDK` Internals**
 - Restricts access to **internal APIs**.
 - Improves **security and maintainability**.
+
+### **🔹 What is Strong Encapsulation in JDK Internals?**
+Java 17 **enforces stronger encapsulation** of JDK internal APIs. This means that **deep reflection on JDK internal classes is restricted**, improving security and preventing unintended dependencies on non-public components.
+
+Before Java 17, developers could **access internal APIs** using reflection (`setAccessible(true)`), which posed security risks and led to compatibility issues across Java versions. With **strong encapsulation**, Java prevents access to these APIs by default.
+
+
+
+### **🔹 Key Benefits of Strong Encapsulation**
+✅ **Improves security** by preventing unauthorized access to internal JDK components.  
+✅ **Enhances maintainability**, ensuring that only public APIs are accessible.  
+✅ **Reduces reliance on undocumented classes**, which could break with Java updates.  
+✅ **Encourages developers** to use official Java APIs instead of hacking into internal implementations.
+
+
+
+### **🔹 Example: Restriction of Internal APIs**
+If your code previously relied on an internal API like `sun.misc.Unsafe`, Java 17 **blocks access**:
+
+```java
+import sun.misc.Unsafe; // ❌ Restricted access
+
+public class UnsafeDemo {
+    public static void main(String[] args) throws Exception {
+        Unsafe unsafe = Unsafe.getUnsafe(); // ❌ Throws an exception in Java 17
+        System.out.println("Unsafe instance obtained: " + unsafe);
+    }
+}
+```
+
+👉 **In Java 17, this will fail because `sun.misc.Unsafe` is no longer accessible by default!**  
+
+
+### **🔹 How to Access Restricted APIs (If Necessary)**
+If you **really** need access to internal APIs, you must explicitly enable them using JVM flags:
+
+```sh
+--add-opens java.base/java.lang=ALL-UNNAMED
+```
+
+This is **not recommended** for production, as it **goes against Java 17’s security principles**.
+
+---
+
+### **🔹 Why is Strong Encapsulation Important?**
+🚀 **Prevents security vulnerabilities**, reducing attack surfaces.  
+🚀 **Ensures long-term code compatibility** with future Java versions.  
+🚀 **Encourages developers** to rely on standard Java APIs rather than internal hacks.  
+
+Java 17 takes a **strict but necessary step** towards making the platform safer and more stable! 
+
+---
 
 ### **5️⃣ Deprecation & Removal**
 - **Deprecated** Applet API.
