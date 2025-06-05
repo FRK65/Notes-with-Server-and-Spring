@@ -4,17 +4,24 @@ One Liner answer
 
 ---
 
-1). Improve String Securities functions isBlank(), strip(), lines(), repeat(n)
-2). Local Variable Syntex for Lambda Parameter -> (var x, var y) -> x + y
+1). Improve String Securities functions isBlank(), strip(), lines(), repeat(n).
+
+2). Local Variable Syntex for Lambda Parameter -> (var x, var y) -> x + y.
+
 3). Java 11 made the **new HTTP Client API** official (`java.net.http`). which is Easier to use than the old `HttpURLConnection`.
+
 4). new HTTP Client API, Simplifies network communication and boosts performance.
+
 5). Java 11 **introduced Flight Recorder**, a lightweight **performance monitoring tool which Helps analyze 
 **memory usage, application behavior, and execution profiling**. 
-6). Removed Java EE (`JAXB`, `JAX-WS`, `CORBA`)
-7). Collection API Enhancements. `toArray(IntFunction<T[]>)` makes array conversion simpler. and `Collectors` enhancements improve **stream operations**.
-8). Improved Performance & GC Optimization. **Epsilon GC** introduced → A **no-op** garbage collector for performance testing.
-9). JVM **startup time improved** for faster execution.
 
+6). Removed Java EE (`JAXB`, `JAX-WS`, `CORBA`).
+
+7). Collection API Enhancements. `toArray(IntFunction<T[]>)` makes array conversion simpler. and `Collectors` enhancements improve **stream operations**.
+
+8). Improved Performance & GC Optimization. **Epsilon GC** introduced → A **no-op** garbage collector for performance testing.
+
+9). JVM **startup time improved** for faster execution.
 
 ---
 
