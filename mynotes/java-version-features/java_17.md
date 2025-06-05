@@ -3,6 +3,37 @@ Java 17, being a **Long-Term Support (LTS)** release, introduced various improve
 - secure, and
 - efficient.
 
+  ## In One Line All Java 17 Features are :
+  
+   1). Sealed Classes (Only declare classes can extend a class).
+  
+   2). Pattern Matching for Switch case (Pass Object it will detect (int double String) any also handle null)
+  
+   3). New API for better random number generation with selected Algo. via New RandomGenerator Interface.
+  
+   4). Strong Encapsulation to Prevents security vulnerabilities and Improves security.
+  
+   5). Removed outdated features to improve security, maintainability, and modern coding standards.
+    - **✅ Removed The Applet API :** Modern browsers no longer support Java applets due to security concerns.
+      Java developers should use JavaScript, WebAssembly, or other web technologies instead
+    - **✅ Removed SecurityManager :** which restrict access to system resources, Coz Applications should now use
+      OS-level security policies or modules like Java Platform Module System (JPMS).
+    - **✅ Dropped RMI Activation System :** Remote Method Invocation (RMI) Activation System, Existing RMI applications should
+      migrate to newer remote communication technologies.
+      
+   6). Performance & Garbage Collector (GC) Improvements : G1 GC (Garbage-First Garbage Collector) now reduces pause times and handles large heaps more efficiently
+   ZGC (Z Garbage Collector) is low-latency and now uses less memory, making applications faster.
+  
+   7). Text blocks (""" syntax) are now optimized for better multi-line formatting. 🚀 No need for \n or manual line breaks anymore!
+  
+  
+   8). Java Enhancement Proposals (JEPs) : Developers can now interact with system memory directly for better performance.
+  
+  
+   9). macOS/AArch64 Support (Apple Silicon) : Java 17 fully supports Apple’s M1/M2 chips, optimizing performance for macOS on ARM architecture. Applications run faster on Apple Silicon devices.
+  
+    
+
 Here’s a theoretical overview of its key features:
 ---
 ### 1️⃣ Sealed Classes (`sealed`, `permits`)**
